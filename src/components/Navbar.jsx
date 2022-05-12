@@ -23,7 +23,7 @@ export default function Navbar() {
                     ENCOM
                 </Typography>
                 <Link
-                    href="https://github.com/mdaggs/"
+                    href="https://github.com/mdaggs/encom"
                 >
                     <Button
                         variant="contained"

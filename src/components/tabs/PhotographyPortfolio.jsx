@@ -1,5 +1,5 @@
-import React from 'react'
-import { Card, CardMedia, Grid, Typography, CardContent, Container } from '@mui/material'
+import React, { useState } from 'react'
+import { Container, Grid, Card, CardMedia, CardContent, Typography } from '@mui/material'
 import airport from './img/photography/airport.jpeg'
 import bitter from './img/photography/bitter.jpeg'
 import skilift from './img/photography/skilift.jpeg'
@@ -8,27 +8,53 @@ import bronx from './img/photography/bronx.jpeg'
 import snowie from './img/photography/snowie.jpeg'
 import tulsaremote from './img/photography/tulsaremote.jpeg'
 
-export default function PhotographyPortfolio() {
+export default function TestContent3() {
+
     const data = [
-      {id: 1, image: airport, heading: "Overcast Airport"},
-      {id: 2, image: bitter, heading: "Bitter.com"},
-      {id: 3, image: skilift, heading: "Kirkwood California"},
-      {id: 4, image: blue1, heading: "Pondering Chi"},
-      {id: 5, image: bronx, heading: "Bronx"},
-      {id: 6, image: snowie, heading: "Snowie"},
-      {id: 7, image: tulsaremote, heading: "Remote Work"}
+      {id: 1, position: "row", image: airport},
+      {id: 2, position: "row-reverse", image: bitter},
+      {id: 3, position: "row", image: skilift},
+      {id: 4, position: "row-reverse", image: blue1},
+      {id: 5, position: "row", image: bronx},
+      {id: 6, position: "row-reverse", image: snowie},
+      {id: 7, position: "row", image: tulsaremote}
     ]
 
+    const [steps, setSteps] = useState(0);
+    const [row, setRow] = useState(true)
+
+    function increment() {
+      setSteps(prevState => prevState + 1);
+      oddOrEven(steps)
+    }
+
+    function oddOrEven(number) {
+      //check if the number is even
+      if(number % 2 == 0) {
+        console.log("The number is even.");
+        setRow(false)
+        console.log(number)
+        console.log(row)
+      }
+
+      // if the number is odd
+      else {
+        console.log("The number is odd.");
+        setRow(true)
+        console.log(number)
+        console.log(row)
+      }
+    }
+
+    
     return (
       <Container>
-        <Grid container spacing={1} direction="row">
-          {
-            data.map((payload) => {
-              return (
-                <>
+          {data.map((payload) => {
+            return (
+                <Grid container spacing={2} direction={payload.position}>
                   <Grid item xs={8}>
                     <Card>
-                      <CardMedia
+                      <CardMedia 
                         component="img"
                         height="100%"
                         width="100%"
@@ -39,22 +65,22 @@ export default function PhotographyPortfolio() {
                   </Grid>
 
                   <Grid item xs={4}>
-                  <Card>
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {payload.heading}    
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        By: Matthew Daggs
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              </>
-              )
-            })
-          }
-        </Grid>
+                    <Card>
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                          {payload.heading}    
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          By: Matthew Daggs
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+
+                  <Grid item xs={12}></Grid>
+              </Grid>
+            )
+          })}
       </Container>
   )
 }

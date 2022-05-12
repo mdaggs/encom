@@ -5,7 +5,7 @@ import { createTheme, ThemeProvider } from "@mui/material";
 
 const theme = createTheme({
   palette: {
-    type: 'light',
+    type: 'dark',
     primary: {
       main: '#f7f2e9',
     },
@@ -14,25 +14,11 @@ const theme = createTheme({
     },
     background: {
       default: '#30464D',
-      paper: '#f7f2e9',
+      paper: '#fdfdfd',
     },
     info: {
       main: '#2196f3',
     },
-  },
-  typography: {
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
   },
 });
 
